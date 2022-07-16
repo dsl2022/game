@@ -26,17 +26,32 @@ rowsArr.forEach((row) => {
   for (let i = 1; i < 4; i++) {
     const column = document.createElement("div");
     column.id = `${row}-${i}`;
-    column.textContent = `column-${row}-${i}`;
     column.style.border = "1px solid black";
     column.style.width = "300px";
     column.style.height = "300px";
     rowContainer.appendChild(column);
-    column.addEventListener("click", (e, row, column) =>
-      handleGrid(e, row, column)
+
+    column.addEventListener(
+      "click",
+      function () {
+        handleGrid(column);
+      },
+
+      false
     );
   }
 });
-
-function handleGrid(e, row, column) {
-  console.log(`hello grid ${e}${row}${column}`);
+function handleGrid(column) {
+  const crossImg = document.createElement("img");
+  crossImg.src = "./cross.png";
+  crossImg.style.width = "300px";
+  crossImg.style.height = "300px";
+  column.appendChild(crossImg);
 }
+// document
+//   .getElementById("someid")
+//   .addEventListener(
+//     "click",
+//     someEventHander.bind(event, "param1", "param2"),
+//     false
+//   );
